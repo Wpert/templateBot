@@ -2,7 +2,7 @@ from typing import List
 
 from aiogram import html, types, Router
 from aiogram.filters import Command, CommandObject
-from aiogram.filters.text import Text
+# from aiogram.filters.text import Text
 from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 

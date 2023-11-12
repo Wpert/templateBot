@@ -1,4 +1,4 @@
-# from logic.core import *
+from logic.core import *
 from logic import *
 
 import asyncio
