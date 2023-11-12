@@ -19,34 +19,30 @@ router = Router()
 @loggerChat(AccessStatus.default)
 async def start(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
     if (command.args) and userDataBase[msg.from_user.id]["status"] > 1:
-        # try:
-            await state.set_state(states.UserMainMenu.answer)
+        await state.set_state(states.UserMainMenu.answer)
 
-            adminId: int = msg.from_user.id
-            # user id | msg id
-            userId = int(command.args)
-            userName: str = userDataBase[userId]["username"]
+        adminId: int = msg.from_user.id
+        # user id | msg id
+        userId = int(command.args)
+        userName: str = userDataBase[userId]["username"]
 
-            userDataBase[adminId]["QnAStatus"] = "answer"
-            userDataBase[adminId]["QnAInfo"] = f"{userId}"
+        userDataBase[adminId]["QnAStatus"] = "answer"
+        userDataBase[adminId]["QnAInfo"] = f"{userId}"
 
-            builder = InlineKeyboardBuilder()
-            builder.add(types.InlineKeyboardButton(
-                text="Отмена",
-                callback_data=f"QnA_cancel"
-                ))
+        builder = InlineKeyboardBuilder()
+        builder.add(types.InlineKeyboardButton(
+            text="Отмена",
+            callback_data=f"QnA_cancel"
+            ))
 
-            await bot.send_message(
-                adminId,
-                text=f"Вы хотите отправить ответ пользователю {userName}({userId}), если это так, то отправьте сообщение, иначе нажмите 'Отмена'.",
-                parse_mode="HTML",
-                reply_markup=builder.as_markup()
-                )
+        await bot.send_message(
+            adminId,
+            text=f"Вы хотите отправить ответ пользователю {userName}({userId}), если это так, то отправьте сообщение, иначе нажмите 'Отмена'.",
+            parse_mode="HTML",
+            reply_markup=builder.as_markup()
+            )
 
-            return
-        # except:
-        #     print(command.args)
-        #     print("{} пытается воспользоваться start с аргументами.".format(msg.from_user.id))
+        return
 
     await msg.answer(userStartText)
     await msg.answer(
@@ -58,7 +54,7 @@ async def start(msg: types.Message, command: CommandObject, state: FSMContext) -
 
 @router.message(Command('help'))
 @loggerChat(AccessStatus.default)
-async def help(msg: types.Message, command: CommandObject, state: FSMContext) -> None:  
+async def userhelp(msg: types.Message, command: CommandObject, state: FSMContext) -> None:  
     await msg.answer(userHelpText, parse_mode="HTML")
     await state.set_state(states.UserMainMenu.menu)
 

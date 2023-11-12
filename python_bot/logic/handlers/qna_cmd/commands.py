@@ -33,7 +33,7 @@ async def makeQuestion(msg: types.Message, command: CommandObject, state: FSMCon
         reply_markup=startKB(),
         parse_mode="HTML"
         )
-    
+
     await state.set_state(states.UserMainMenu.menu)
 
     # Дальше сообщение отсылается в чат QnA
@@ -82,7 +82,7 @@ async def callbacks_qna(callback: types.CallbackQuery, command: CommandObject, s
             userId,
             text=("Вам пришёл ответ на вопрос:\n\n" + adminAnswers[adminId]),
             parse_mode="HTML")
-        
+
         del adminAnswers[adminId]
 
         await callback.answer(text="Сообщение отправлено пользователю.")
@@ -91,7 +91,6 @@ async def callbacks_qna(callback: types.CallbackQuery, command: CommandObject, s
     elif cbData[1] == "cancel":
         await callback.answer(text="Отмена успешно произошла.")
         await state.set_state(states.UserMainMenu.menu)
-    
 
     await callback.answer()
 

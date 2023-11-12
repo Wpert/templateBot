@@ -5,4 +5,3 @@ class UserMainMenu(StatesGroup):
     menu = State()
     question = State()
     answer = State()
-    

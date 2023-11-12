@@ -26,7 +26,7 @@ async def stop(msg: types.Message, command: CommandObject, state: FSMContext) ->
 @loggerChat(AccessStatus.admin)
 async def setStatus(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
     parsedStr: str = command.args.split()
-    if not(len(parsedStr) == 2):
+    if not len(parsedStr) == 2:
         return
 
     try:

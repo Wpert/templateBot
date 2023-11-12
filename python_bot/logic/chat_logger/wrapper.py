@@ -46,7 +46,7 @@ def loggerChat(access_level: AccessStatus, loggingFlag: bool = True):
 
             # Если человек ещё не был зарегистрирован в базе данных, то регистрируем
             # добавляем AccessStatus default
-            if not(userId in userDataBase.keys()):
+            if not userId in userDataBase.keys():
                 userDataBase[userId] = {'username' : username, 'status' : AccessStatus.active}
                 await bot.send_message(
                     loggerChat_id,

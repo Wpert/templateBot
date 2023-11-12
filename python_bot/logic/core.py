@@ -9,11 +9,11 @@ import json
 
 with open("/home/vpert/gitproj/templatebot/templatebot/python_bot/logic/variables.json", "r") as variables:
     variables_json = variables.read()
-vars = json.loads(variables_json)
+varias = json.loads(variables_json)
 
-TOKEN: str = vars["token"]
-loggerChat_id: int = vars["logChat"]
-qnaChat_id: int = vars["qnaChat"]
+TOKEN: str = varias["token"]
+loggerChat_id: int = varias["logChat"]
+qnaChat_id: int = varias["qnaChat"]
 bot_id: int = 0
 
 import logging

@@ -16,7 +16,6 @@ def startKB():
         types.KeyboardButton(text="Четвертая кнопка"),
         types.KeyboardButton(text="Пятая кнопка")
     )
-
     return builder.as_markup()
 
 
@@ -28,7 +27,6 @@ def qnaDefaultKB(userId: int):
             callback_data=f"QnA_answer_{userId}",
             )
     )
-    
     return builder.as_markup()
 
 def qnaChooseAnswerKB(userId: int):
@@ -43,7 +41,6 @@ def qnaChooseAnswerKB(userId: int):
             url=f"tg://user?id={userId}"
             )
     )
-
     return builder.as_markup()
 
 def qnaAnswerKB(adminId: int):
@@ -60,6 +57,5 @@ def qnaAnswerKB(adminId: int):
             callback_data=f"QnA_send_{adminId}",
             ),
     )
-    
     return builder.as_markup()
 
