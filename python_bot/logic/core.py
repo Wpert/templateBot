@@ -5,10 +5,15 @@
 
 import typing
 from typing import Dict, Any
+import json
 
-TOKEN: str = "6148619132:AAFcPv-zte6-H1KYL_LRsbY-bUuLFs9_srA"
-loggerChat_id: int = -986688477
-qnaChat_id: int = -882729066
+with open("/home/vpert/gitproj/templatebot/templatebot/python_bot/logic/variables.json", "r") as variables:
+    variables_json = variables.read()
+vars = json.loads(variables_json)
+
+TOKEN: str = vars["token"]
+loggerChat_id: int = vars["logChat"]
+qnaChat_id: int = vars["qnaChat"]
 bot_id: int = 0
 
 import logging

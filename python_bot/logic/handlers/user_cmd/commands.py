@@ -50,7 +50,7 @@ async def start(msg: types.Message, command: CommandObject, state: FSMContext) -
 
     await msg.answer(userStartText)
     await msg.answer(
-        'Ты написал:\n<b>"{}"</b>'.format(html.quote(str(command.args))),
+        f'Ты написал:\n<b>"{html.quote(str(command.args))}"</b>',
         reply_markup=startKB(),
         parse_mode="HTML"
         )

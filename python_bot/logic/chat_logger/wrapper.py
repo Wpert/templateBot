@@ -88,15 +88,12 @@ def loggerChat(access_level: AccessStatus, loggingFlag: bool = True):
                 except Exception as rslt:
                     await bot.send_message(
                         loggerChat_id,
-                        '#баг\nВ вызове функции <b>{}</b> произошла ошибка:\n{}'.format(
-                            func.__name__,
-                            str(rslt.args)
-                            ),
+                        f'#баг\nВ вызове функции <b>{func.__name__}</b> произошла ошибка:\n{str(rslt.args)}',
                         parse_mode="HTML")
                     return None
             else:
                 await msg.reply(
-                    "Недостаточно прав на использование функции <b>{}</b>.".format(func.__name__),
+                    f"Недостаточно прав на использование функции <b>{func.__name__}</b>.",
                     parse_mode="HTML"
                     )
                 return None
