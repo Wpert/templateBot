@@ -48,7 +48,7 @@ def qnaAnswerKB(adminId: int):
     builder.row(
         types.InlineKeyboardButton(
             text="Переписать ответ",
-            callback_data=f"QnA_edit",
+            callback_data="QnA_edit",
             ),
     )
     builder.row(

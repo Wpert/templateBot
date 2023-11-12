@@ -1,5 +1,3 @@
-from aiogram import html, types
-
 userHelpText: str = """Я — бот, созданный специально для мероприятий университета НИЯУ МИФИ.
 
 <b>Функционал:</b>

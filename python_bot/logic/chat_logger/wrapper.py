@@ -1,17 +1,25 @@
 from typing import Callable, Union, Any
 from aiogram.types import Message, CallbackQuery
-from aiogram.filters import Command, CommandObject
-from aiogram.fsm.context import FSMContext
 
 from datetime import datetime
 
-from logic import loggerChat_id, dp, bot, userDataBase, bot_id
+from logic import loggerChat_id, bot, userDataBase
 from logic.texts.base import wrapperFunctionText, wrapperAccessText
 
 import enum
 
 @enum.unique
 class AccessStatus(enum.IntEnum):
+    """Уровни доступа команд для поользователей бота
+    
+    default -- любой пользователь
+    active -- пользователь, который использовал бота ранее
+    moderator -- модератор
+    admin -- ответственный за бота человек
+
+    но также можно и добавлять сюда собственные уровни доступа :/
+    """
+
     default = 0
     active = 1
     moderator = 2
@@ -46,7 +54,7 @@ def loggerChat(access_level: AccessStatus, loggingFlag: bool = True):
 
             # Если человек ещё не был зарегистрирован в базе данных, то регистрируем
             # добавляем AccessStatus default
-            if not userId in userDataBase.keys():
+            if userId not in userDataBase.keys():
                 userDataBase[userId] = {'username' : username, 'status' : AccessStatus.active}
                 await bot.send_message(
                     loggerChat_id,

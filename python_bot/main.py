@@ -3,8 +3,6 @@ from logic import *
 
 import asyncio
 
-from aiogram.filters.command import Command
-
 # регистрируем команды
 from logic.handlers import user_cmd
 from logic.handlers import qna_cmd

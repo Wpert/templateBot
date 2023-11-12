@@ -1,9 +1,9 @@
-'''Объявляет все объекты для работы.
+"""Объявляет все объекты для работы.
 
 Подключает нужные модули для бота, настраивает базовые настройки
-для отправки и получения данных.'''
+для отправки и получения данных.
+"""
 
-import typing
 from typing import Dict, Any
 import json
 
@@ -17,7 +17,7 @@ qnaChat_id: int = varias["qnaChat"]
 bot_id: int = 0
 
 import logging
-from aiogram import Bot, Dispatcher, types
+from aiogram import Bot, Dispatcher
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
