@@ -23,7 +23,6 @@ async def start(msg: types.Message, command: CommandObject, state: FSMContext) -
     Если пользователь не был зарегистрирован в системе до этого, то можно будет регистрировать пользователя здесь
     При передаче аргументов в /start определенным образом триггерится скрипт ответа на вопрос пользователю
     """
-
     if (command.args) and userDataBase[msg.from_user.id]["status"] > 1:
         await state.set_state(states.UserMainMenu.answer)
 
@@ -61,35 +60,27 @@ async def start(msg: types.Message, command: CommandObject, state: FSMContext) -
 @router.message(Command('help'))
 @loggerChat(AccessStatus.default)
 async def userhelp(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
-    """Дефолтная команда /help чтобы узнать о возможностях бота
-    """
-
+    """Дефолтная команда /help чтобы узнать о возможностях бота"""
     await msg.answer(userHelpText, parse_mode="HTML")
     await state.set_state(states.UserMainMenu.menu)
 
 @router.message(Command('zeroaccess'))
 @loggerChat(AccessStatus.default)
 async def zeroAccess(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
-    """Команда с уровнем доступа пользователя default
-    """
-
+    """Команда с уровнем доступа пользователя default"""
     await msg.reply('Функция с нулевым уровнем доступа.')
     await state.set_state(states.UserMainMenu.menu)
 
 @router.message(Command('moderaccess'))
 @loggerChat(AccessStatus.moderator)
 async def moderatorAccess(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
-    """Команда с уровнем доступа пользователя moderator
-    """
-
+    """Команда с уровнем доступа пользователя moderator"""
     await msg.reply('Функция с уровнем доступа модератора.')
     await state.set_state(states.UserMainMenu.menu)
 
 @router.message(Command('adminaccess'))
 @loggerChat(AccessStatus.admin)
 async def adminAccess(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
-    """Команда с уровнем доступа пользователя admin
-    """
-
+    """Команда с уровнем доступа пользователя admin"""
     await msg.reply('Функция с уровнем доступа админа.')
     await state.set_state(states.UserMainMenu.menu)

@@ -17,9 +17,7 @@ router = Router()
 @router.message(Command('question'))
 @loggerChat(AccessStatus.default)
 async def startQuestion(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
-    """Старт обработки вопроса от пользователя после регистрации команды /question
-    """
-
+    """Старт обработки вопроса от пользователя после регистрации команды /question"""
     await msg.answer(
         "Следующим сообщением введите свой вопрос.",
         reply_markup=types.ReplyKeyboardRemove()
@@ -36,8 +34,6 @@ async def makeQuestion(msg: types.Message, command: CommandObject, state: FSMCon
     Отправляем сообщение пользователю, меняем состояние пользователя
     Отправляем сообщение в чат QnA, добавляем к сообщению кнопки
     """
-
-
     await msg.reply(
         "Вопрос принят на рассмотрение.",
         reply_markup=startKB(),
@@ -70,9 +66,7 @@ async def makeQuestion(msg: types.Message, command: CommandObject, state: FSMCon
 @dp.callback_query(Text(startswith="QnA_"))
 @loggerChat(AccessStatus.moderator)
 async def callbacks_qna(callback: types.CallbackQuery, command: CommandObject, state: FSMContext):
-    """Обработка вопроса от пользователя в чате qna
-    """
-
+    """Обработка вопроса от пользователя в чате qna"""
     cbData = callback.data.split("_")
 
     if cbData[1] == "answer":
@@ -112,9 +106,7 @@ async def callbacks_qna(callback: types.CallbackQuery, command: CommandObject, s
     )
 @loggerChat(AccessStatus.moderator)
 async def answerQuestionText(msg: types.Message, command: CommandObject, state: FSMContext) -> None:
-    """Переспрашиваем хотим ли отправить ЭТУ версию текста или поменять её
-    """
-
+    """Переспрашиваем хотим ли отправить ЭТУ версию текста или поменять её"""
     adminId: int = msg.from_user.id
     questionAnswer: str = msg.text
 

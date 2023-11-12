@@ -4,6 +4,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 # надо бы вообще к qna приступить
 
 def startKB():
+    """Дефолтная клавиатура в main menu бота"""
     builder = ReplyKeyboardBuilder()
     builder.row(
         types.KeyboardButton(text="Первая кнопка"),
@@ -20,6 +21,7 @@ def startKB():
 
 
 def qnaDefaultKB(userId: int):
+    """Клавиатура под сообщением в чате QnA вопроса пользователя"""
     builder = InlineKeyboardBuilder()
     builder.row(
         types.InlineKeyboardButton(
@@ -30,6 +32,7 @@ def qnaDefaultKB(userId: int):
     return builder.as_markup()
 
 def qnaChooseAnswerKB(userId: int):
+    """Клавиатура под сообщением в чате QnA вопроса пользователя после нажатия 'взяться за ответ'"""
     builder = InlineKeyboardBuilder()
     builder.row(
         types.InlineKeyboardButton(
@@ -44,6 +47,7 @@ def qnaChooseAnswerKB(userId: int):
     return builder.as_markup()
 
 def qnaAnswerKB(adminId: int):
+    """Клавиатура под сообщением для отправки ответа на вопрос"""
     builder = InlineKeyboardBuilder()
     builder.row(
         types.InlineKeyboardButton(
